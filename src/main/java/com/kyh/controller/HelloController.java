@@ -14,7 +14,7 @@ public class HelloController {
     @Autowired
     private Environment env;
 
-    @Value("producer.hello")
+    @Value("${producer.hello}")
     private String hello;
 
     @RequestMapping("/hello")
@@ -25,6 +25,7 @@ public class HelloController {
         } catch (Exception e){
             e.printStackTrace();
         }
-        return "hello "+name+"，this is first messge from " + myIP + ":" + env.getProperty("server.port") + " and server config: [" + hello + "]";
+        return "hello "+name+"，this is first messge from " + myIP + ":" + env.getProperty("server.port")
+                + " and server config: [" + hello + "]";
     }
 }
